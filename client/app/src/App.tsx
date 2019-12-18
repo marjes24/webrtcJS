@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { LocalVideo } from "./components/LocalVideo";
+import { Conductor } from "./components/Conductor";
 
 const App: React.FC = () => {
   return (
@@ -20,7 +20,7 @@ const App: React.FC = () => {
           Learn React
         </a>
       </header> */}
-      <LocalVideo/>
+      <Conductor />
     </div>
   );
 }

@@ -9,18 +9,15 @@ const VideoPlayer: FC<Props> = ({ play, stream }) => {
     const videoEl = useRef<HTMLVideoElement>(null);
 
     useEffect(() => {
-        if (videoEl.current && stream)
-            videoEl.current.srcObject = stream;
+        if (videoEl.current && stream) {
+            const videoRef = videoEl.current;
+            videoRef.srcObject = stream;
+            videoRef.play();
+        }
     }, [play, stream]);
 
     return (
-        <video
-            ref={videoEl}
-            width={600}
-            height={600}
-            autoPlay={true}
-        >
-        </video>
+        <video ref={videoEl} height={400} width={400}/>
     );
 }
 

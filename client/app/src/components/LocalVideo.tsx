@@ -1,11 +1,18 @@
 import React, { FC, useState, Suspense } from "react";
 import { VideoPlayer } from "./VideoPlayer";
 import { useMedia} from "./useMedia";
+import { Nullable } from "../common/types";
 
-const LocalVideo: FC = props => {
+interface Props { 
+    setStream: (strm: Nullable<MediaStream>) => void;
+}
+
+const LocalVideo: FC<Props> = props => {
     const [play, playVideo] = useState(false);
 
     const stream = useMedia(play);
+
+    props.setStream(stream);
 
     return (
         <>
@@ -13,7 +20,7 @@ const LocalVideo: FC = props => {
             <button
                 onClick={e => playVideo(!play)}
             >
-                Play Video
+                { play ? "Stop Video" :"Play Video"   }
         </button>
         </>
     )
