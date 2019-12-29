@@ -1,0 +1,19 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "app.ts",
+  "author": "Marcos Estrada",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "PORT=5000 node build/app.js",
+    "bStart": "yarn build && yarn start"
+  },
+  "devDependencies": {
+    "@types/ws": "^6.0.4",
+    "typescript": "^3.7.4"
+  },
+  "dependencies": {
+    "ws": "^7.2.1"
+  }
+}
