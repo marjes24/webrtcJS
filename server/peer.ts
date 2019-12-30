@@ -55,6 +55,7 @@ class Peer extends EventEmitter {
         });
 
         this.ws.addEventListener("close", () => {
+            this.emit("END_CALL");
             this.emit("CLOSE");
         });
     }
@@ -74,11 +75,9 @@ class Peer extends EventEmitter {
     }
 
     get peerId() { return this.id; }
-
     set peerId(id: number) { this.id = id; }
 
     set peerStatus(s: PeerStatus) { this.status = s; }
-
     get peerStatus() { return this.status; }
 }
 

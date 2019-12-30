@@ -26,7 +26,8 @@ class PeerManager {
         });
 
         p.on("CLOSE", () => {
-
+            if(this.peers.has(p.peerId)) this.peers.delete(p.peerId);
+            this.broadCastPeers();
         });
 
         this.broadCastPeers();
@@ -34,7 +35,7 @@ class PeerManager {
 
     private setCall(originId: number, destinationId: number) {
         console.log(
-            "Setting call from p1: %s to p2: %s",
+            "Call from p1: %s to p2: %s...",
             originId,
             destinationId
         );
@@ -44,6 +45,8 @@ class PeerManager {
             const destinationPeer = this.peers.get(destinationId);
 
             this.callManager.createCall(originPeer!, destinationPeer!);
+
+            // Add call listeners ( exmaple on call ending broadcast all peers again);
         } else { 
             console.error("Peers for call where not found");
         }
@@ -51,15 +54,17 @@ class PeerManager {
 
     private broadCastPeers() { 
         console.log("Broadcasting connected peers...");
-        type PeerList = ReturnType<Peer["serialize"]>[];
-        const availablePeers = [] as PeerList;
+        type PeerList = {
+            [key: number]: ReturnType<Peer["serialize"]>;
+        };
+        const availablePeers = {} as PeerList;
 
         this.peers.forEach(p => {
-            availablePeers.push(p.serialize());
+            availablePeers[p.peerId] = p.serialize();
         });
 
         this.peers.forEach(p => p.sendMessage({
-            topic: "PEER_LIST",
+            topic: "AVAILABLE_PEERS",
             peers: availablePeers
         }));
 
