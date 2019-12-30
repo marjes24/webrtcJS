@@ -1,10 +1,18 @@
 import { useEffect, useState } from "react";
 import { Peer, Nullable, PeersObj } from "../common/types";
 
-const PEERS_TOPIC = "AVAILABLE_PEERS"
+const PEERS_TOPIC = "AVAILABLE_PEERS";
+const PEER_ID = "PEER_IDENTIFIER";
 
+
+/**
+ * Hook that uses websocket to listen for available peers and for
+ * identifaction from signal server
+ * @param ws - signal server websocket
+ */
 const usePeers = (ws: Nullable<WebSocket>) => {
     const [availablePeers, setPeers] = useState({} as PeersObj);
+    const [selfId, setSelfId] = useState(null as Nullable<number>);
 
     const addPeerListener = (ws: WebSocket) => {
         ws.addEventListener("message", ({ data }) => {
@@ -13,6 +21,8 @@ const usePeers = (ws: Nullable<WebSocket>) => {
 
                 if (mssg.topic === PEERS_TOPIC) {
                     setPeers(mssg.peers);
+                } else if(mssg.topic === PEER_ID) {
+                    setSelfId(mssg.id);
                 }
             } catch (err) {
                 console.error("Error parsing websocket message");
@@ -31,7 +41,7 @@ const usePeers = (ws: Nullable<WebSocket>) => {
             ws.addEventListener("open", evnt => addPeerListener(ws));
     }, [ws]);
 
-    return availablePeers;
+    return [availablePeers, selfId] as const;
 }
 
 export { usePeers }

@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { Nullable } from "../common/types";
 
+/**
+ * Hook to start or stop stream from webcam
+ * @param play - Should start user media
+ */
 const useMedia = (play: boolean) => {
     const [stream, setStream] = useState(null as Nullable<MediaStream>);
 

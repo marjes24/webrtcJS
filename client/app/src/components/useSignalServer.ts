@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import { Nullable, Peer } from "../common/types";
 
 /**
- * - Opens andwebsocket to signal server
- * - Provides and updates avaible peers
+ * - Opens a websocket to signal server
  * @param url 
  */
 const useSignalServer = (url: string) => {
