@@ -3,6 +3,7 @@ import { PeerList } from "./PeerList";
 import { PeersObj, CallState, Nullable, CallStatus } from "../common/types";
 import { isWsOpen } from "../common/utils/isWsOpen";
 import { WsContext } from "./websocketCtx";
+import { CallButtons } from "./callButtons";
 
 interface Props { 
     selfId: Nullable<number>;
@@ -16,8 +17,9 @@ const CallController: FC<Props> = props => {
     const ws = useContext(WsContext);
 
     return (
-        <div>
+        <div id="call-controller">
             <PeerList peers={props.peers} selectPeer={selectPeer}/>
+            <CallButtons />
         </div>
     );
 }

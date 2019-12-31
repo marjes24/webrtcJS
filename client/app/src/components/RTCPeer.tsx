@@ -1,5 +1,6 @@
 import React, { FC } from "react";
-import { Peer, Nullable, CallState} from "../common/types";
+import { Peer, Nullable, CallState } from "../common/types";
+import { VideoPlayer } from "./VideoPlayer";
 
 interface Props {
     selfId: Nullable<number>;
@@ -9,7 +10,11 @@ interface Props {
 
 const RTCPeer: FC<Props> = props => {
 
-    return <div id="rtc-peer"></div>;
+    return (
+        <div id="rtc-peer" className="video-wrapper">
+            <VideoPlayer play={false} stream={null} />
+        </div>
+    );
 }
 
 export { RTCPeer };

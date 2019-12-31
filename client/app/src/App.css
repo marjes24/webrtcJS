@@ -1,38 +1,98 @@
 .App {
   text-align: center;
+  font-size: 14px;
+  width: 80%;
+  margin: auto;
 }
 
-/* .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+button { 
+  width: 100px;
+  height: 35px;
+  cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+button.green {
+  background-color: rgb(3, 180, 3);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+button.red {
+  background-color: red;
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
+.App div {
+  box-sizing: border-box;
+}
+
+#conductor {
+  /* width: 80%; */
+  margin: auto;
+  margin-top: 25px;
+}
+
+#conductor hr {
+  margin-top: 45px;
+}
+
+.video-wrapper { 
+  display: inline-block;
+  position: relative;
+  margin: auto 25px;
+}
+
+#play-local {
+  position: absolute;
+  left: 0;
+  bottom: -35px;
+}
+
+.video-wrapper video {
+  width: 426px;
+  height : 240px;
+  background-color: black;
+}
+
+#call-controller {
+  margin-top: 25px;
+  min-height: 25vh;
+  /* border: 1px solid red; */
+  text-align: left;
+}
+
+#peer-list { 
+  display: inline-block;
+}
+
+#peer-list>label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+#peer-select {
+  display: inline-block;
+  min-width: 200px;
+  border: 1px solid darkgray;
+  font-size: inherit;
+}
+
+#peer-select>option {
+  padding: 15px 10px;
+}
+
+option:hover { 
+  cursor: pointer;
+}
+
+#call-buttons {
+  margin: 15px;
+  padding: 15px;
+  vertical-align: top;
+  display: inline-block;
+  height: 300px;
+}
+
+.btn-wrapper { 
+  margin: 25px;
+}

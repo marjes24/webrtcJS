@@ -12,7 +12,10 @@ const PeerList: FC<Props> = props => {
 
     return (
         <div id="peer-list">
-            { peers.map(p => <PeerItem key={p.id} peer={p}/>)}
+            <label htmlFor="peer-select">Select peer:</label>
+            <select multiple id="peer-select">
+                { peers.map(p => <PeerItem key={p.id} peer={p}/>)}
+            </select>
         </div>
     );
 };

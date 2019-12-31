@@ -16,13 +16,16 @@ const Conductor: FC = props => {
 
     return (
         <WsContext.Provider value={ws}>
-            <div>
-                <LocalVideo setStream={setStream} />
-                <RTCPeer
-                    selfId={selfId}
-                    localStream={localStream}
-                    callState={callState}
-                />
+            <div id="conductor">
+                <div id="video-streams">
+                    <LocalVideo setStream={setStream} />
+                    <RTCPeer
+                        selfId={selfId}
+                        localStream={localStream}
+                        callState={callState}
+                    />
+                </div>
+                <hr></hr>
                 <CallController
                     selfId={selfId}
                     peers={availablePeers}

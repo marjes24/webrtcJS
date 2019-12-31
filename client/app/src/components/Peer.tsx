@@ -7,9 +7,12 @@ interface Props {
 
 const PeerItem: FC<Props> = props => {
     return (
-        <li className="peer">
-            {"Peer " + props.peer.id}
-        </li>
+        // <li className="peer">
+        //     {"Peer " + props.peer.id}
+        // </li>
+    <option className="peer">
+        {"Peer " + props.peer.id}
+    </option>
     );
 };
 
