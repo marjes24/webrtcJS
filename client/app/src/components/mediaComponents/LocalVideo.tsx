@@ -1,7 +1,7 @@
-import React, { FC, useState, Suspense } from "react";
+import React, { FC, useState } from "react";
 import { VideoPlayer } from "./VideoPlayer";
 import { useMedia } from "./useMedia";
-import { Nullable } from "../common/types";
+import { Nullable } from "../../common/types";
 
 interface Props {
     setStream: (strm: Nullable<MediaStream>) => void;

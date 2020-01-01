@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Peer, Nullable, CallState } from "../common/types";
+import { Nullable, CallState } from "../../common/types";
 import { VideoPlayer } from "./VideoPlayer";
 
 interface Props {

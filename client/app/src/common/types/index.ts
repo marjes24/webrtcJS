@@ -14,7 +14,7 @@ export enum PeerStatus {
 }
 
 export interface Peer { 
-    id: string,
+    id: number,
     status: PeerStatus
     callState: CallStatus
 }
@@ -27,4 +27,8 @@ export type CallState = {
     status: CallStatus;
     targetPeer: Peer;
     callId: number;
+    /**
+     * Whether or not this client initiated the call
+     */
+    initiator: boolean;
 };

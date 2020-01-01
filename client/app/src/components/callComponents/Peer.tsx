@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Peer } from "../common/types";
+import { Peer } from "../../common/types";
 
 interface Props { 
     peer: Peer, 
@@ -7,10 +7,7 @@ interface Props {
 
 const PeerItem: FC<Props> = props => {
     return (
-        // <li className="peer">
-        //     {"Peer " + props.peer.id}
-        // </li>
-    <option className="peer">
+    <option className="peer" value={props.peer.id}>
         {"Peer " + props.peer.id}
     </option>
     );

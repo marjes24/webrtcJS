@@ -32,7 +32,7 @@ button.red {
 }
 
 #conductor hr {
-  margin-top: 45px;
+  margin-top: 55px;
 }
 
 .video-wrapper { 
@@ -44,7 +44,7 @@ button.red {
 #play-local {
   position: absolute;
   left: 0;
-  bottom: -35px;
+  bottom: -40px;
 }
 
 .video-wrapper video {

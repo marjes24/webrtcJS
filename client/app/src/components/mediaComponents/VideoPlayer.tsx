@@ -1,4 +1,4 @@
-import React, { FC, useRef, useEffect, useState } from "react";
+import React, { FC, useRef, useEffect } from "react";
 
 interface Props {
     stream: MediaStream | null;
@@ -7,7 +7,6 @@ interface Props {
 
 const VideoPlayer: FC<Props> = ({ play, stream }) => {
     const videoEl = useRef<HTMLVideoElement>(null);
-    const [vidSize, setSize] = useState({ width: 0, height: 0});
 
     useEffect(() => {
         if (videoEl.current && stream) {

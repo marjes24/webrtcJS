@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Peer, Nullable, PeersObj } from "../common/types";
+import { Nullable, PeersObj } from "../common/types";
 
 const PEERS_TOPIC = "AVAILABLE_PEERS";
 const PEER_ID = "PEER_IDENTIFIER";

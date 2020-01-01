@@ -1,10 +1,10 @@
-import React, { FC, useState, useContext } from "react";
+import React, { FC, useState } from "react";
 import { useSignalServer } from "./useSignalServer";
 import { usePeers } from "./usePeers";
-import { LocalVideo } from "./LocalVideo";
+import { LocalVideo } from "./mediaComponents/LocalVideo";
 import { Nullable, CallState } from "../common/types";
-import { RTCPeer } from "./RTCPeer";
-import { CallController } from "./CallController";
+import { RTCPeer } from "./mediaComponents/RTCPeer";
+import { CallController } from "./callComponents/CallController";
 import { WsContext } from "./websocketCtx";
 
 const Conductor: FC = props => {
@@ -29,6 +29,7 @@ const Conductor: FC = props => {
                 <CallController
                     selfId={selfId}
                     peers={availablePeers}
+                    callState={callState}
                     setCallState={setCallState}
                 />
             </div>
