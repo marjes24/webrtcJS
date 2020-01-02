@@ -1,13 +1,13 @@
 .App {
   text-align: center;
   font-size: 14px;
-  width: 80%;
+  width: 60%;
   margin: auto;
 }
 
 button { 
   width: 100px;
-  height: 35px;
+  height: 30px;
   cursor: pointer;
 }
 
@@ -19,6 +19,10 @@ button.green {
 button.red {
   background-color: red;
   color: white;
+}
+
+label { 
+  font-weight: bold;
 }
 
 .App div {
@@ -85,14 +89,26 @@ option:hover {
   cursor: pointer;
 }
 
-#call-buttons {
-  margin: 15px;
-  padding: 15px;
+#status-wrapper { 
   vertical-align: top;
   display: inline-block;
-  height: 300px;
+  padding: 0 25px;
+  min-width: 300px
+}
+
+#call-status {
+  margin-left: 25px;
+}
+
+#call-status hr{
+  margin: 5px 0;
+}
+
+#call-buttons {
+  margin: 45px 0;
 }
 
 .btn-wrapper { 
-  margin: 25px;
+  margin: 0 25px;
+  display: inline-block;
 }

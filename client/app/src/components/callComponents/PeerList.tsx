@@ -16,7 +16,7 @@ const PeerList: FC<Props> = props => {
 
     return (
         <div id="peer-list">
-            <label htmlFor="peer-select">Select peer:</label>
+            <label htmlFor="peer-select">Available Peers:</label>
             <select
                 id="peer-select"
                 multiple

@@ -25,8 +25,8 @@ export interface PeersObj {
 
 export type CallState = { 
     status: CallStatus;
-    targetPeer: Peer;
-    callId: number;
+    targetPeer: number;
+    callId?: number;
     /**
      * Whether or not this client initiated the call
      */

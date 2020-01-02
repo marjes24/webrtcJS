@@ -1,7 +1,7 @@
 import { useEffect, useCallback } from "react";
 import { CallState, CallStatus, Nullable } from "../../common/types";
 
-type cb = (s: CallState) => void;
+type cb = (s: Nullable<CallState>) => void;
 
 /**
  * Hook to listen for calls or for response to calls
@@ -26,7 +26,23 @@ const useCallListener = (ws: Nullable<WebSocket>, setCallState: cb) => {
                         initiator: false
                     });
                 } else if (mssg.topic === "CALL_RESPONSE") {
-
+                    console.log(
+                        "Received answer from %s, response: %s", 
+                        mssg.peerId, 
+                        mssg.response
+                    );
+                    if(mssg.response === "ANSWERED") {
+                        setCallState({
+                            status: CallStatus.INACALL,
+                            targetPeer: mssg.peerId,
+                            callId: mssg.callId,
+                            initiator: true
+                        });
+                    } else {
+                        setCallState(null);
+                    }
+                } else if(mssg.topic === "CALL_ENDED") {
+                    setCallState(null);
                 }
             } catch (err) {
                 console.log("useCallListener: Error parsing message");
@@ -36,7 +52,7 @@ const useCallListener = (ws: Nullable<WebSocket>, setCallState: cb) => {
         const addCallListener = () => ws.addEventListener("message", callListener);
         const addCallListenerONOpen = () => addCallListener();
 
-        console.log("Use call listener, adding listener");
+        console.log("useCallListener() - adding listener");
         const { readyState } = ws;
         if(readyState === WebSocket.OPEN)
             addCallListener();
@@ -45,7 +61,7 @@ const useCallListener = (ws: Nullable<WebSocket>, setCallState: cb) => {
 
         // Unsubscribe on cleanup
         return () => {
-            console.log("use call istener removed listener");
+            console.log("useCallListener() - removed listener");
             ws?.removeEventListener("open", addCallListenerONOpen);
             ws?.removeEventListener("message", callListener);
         }

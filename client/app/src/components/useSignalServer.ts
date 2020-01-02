@@ -30,6 +30,13 @@ const useSignalServer = (url: string) => {
 
     }, [url, wsRef]);
 
+    useEffect(() => {
+        return () => {
+            console.log("Closing websocket on cleanup");
+            wsRef.current?.close();
+        };
+    }, [wsRef]);
+
     return ws;
 }
 
