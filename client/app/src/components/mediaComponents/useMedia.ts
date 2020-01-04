@@ -25,12 +25,16 @@ const useMedia = (play: boolean) => {
 
         // On start playing
         (async () => {
-            const newStream = await navigator
-                .mediaDevices
-                .getUserMedia({ video: true });
-                
-            streamRef.current = newStream;
-            setStream(newStream);
+            try { 
+                const newStream = await navigator
+                    .mediaDevices
+                    .getUserMedia({ video: true });
+                    
+                streamRef.current = newStream;
+                setStream(newStream);
+            } catch(err) { 
+                console.error(`getUserMedia() error - ${err.what}`)
+            }
         })(); 
     },[play]);
     
