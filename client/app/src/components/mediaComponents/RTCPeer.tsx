@@ -12,9 +12,6 @@ interface Props {
 const RTCPeer: FC<Props> = props => {
 
     const remoteStream = useWebRTC(props.callState, props.localStream);
-
-    console.log("RTC-PEER: stream");
-    console.log(remoteStream);
     
     return (
         <div id="rtc-peer" className="video-wrapper">

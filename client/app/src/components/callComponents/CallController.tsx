@@ -57,7 +57,8 @@ const CallController: FC<Props> = props => {
     const endCall = () => {
         if(ws && isWsOpen(ws)) {
             ws.send(JSON.stringify({
-                topic: "END_CALL"
+                topic: "END_CALL", 
+                peerId: props.selfId
             }));
 
             props.setCallState(null);
