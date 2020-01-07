@@ -1,14 +1,15 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { VideoPlayer } from './VideoPlayer';
 import { useMedia } from './useMedia';
 import { Nullable } from '../../common/types';
 
 interface Props {
     setStream: (strm: Nullable<MediaStream>) => void;
+    play: boolean;
 }
 
 const LocalVideo: FC<Props> = props => {
-    const [play, playVideo] = useState(false);
+    const { play } = props;
 
     //Get local stream
     const stream = useMedia(play);
@@ -19,13 +20,6 @@ const LocalVideo: FC<Props> = props => {
     return (
         <div className="video-wrapper">
             <VideoPlayer play={play} stream={stream} />
-            <button
-                id="play-local"
-                className={play ? 'red' : 'green'}
-                onClick={e => playVideo(!play)}
-            >
-                {play ? 'Stop Video' : 'Start Video'}
-            </button>
         </div>
     );
 };

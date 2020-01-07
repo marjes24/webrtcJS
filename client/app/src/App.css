@@ -5,7 +5,18 @@
     margin: auto;
 }
 
+/* Clear button stylings */
 button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+}
+
+/* Add custom button stylings */
+button {
+    text-align: center;
     width: 100px;
     height: 30px;
     cursor: pointer;
@@ -25,42 +36,51 @@ label {
     font-weight: bold;
 }
 
+/** Main wrapper styling **/
 .App div {
     box-sizing: border-box;
 }
 
 #conductor {
-    /* width: 80%; */
     margin: auto;
     margin-top: 25px;
 }
 
-#conductor hr {
-    margin-top: 55px;
+/** Video styling **/
+#video-streams-wrapper {
+    display: flex;
+    justify-content: space-between;
 }
 
 .video-wrapper {
+    --width: 45%;
     display: inline-block;
     position: relative;
     margin: auto 25px;
-}
-
-#play-local {
-    position: absolute;
-    left: 0;
-    bottom: -40px;
+    width: var(--width);
+    height: calc(var(--width) * 0.85);
 }
 
 .video-wrapper video {
-    width: 426px;
-    height: 240px;
+    width: 100%;
     background-color: black;
 }
 
+#video-btns {
+    margin: 15px 0;
+    text-align: left;
+    width: 100%;
+    padding: 0 25px;
+}
+
+#play-local {
+    left: 0;
+}
+
+/** Call controller styling **/
 #call-controller {
     margin-top: 25px;
     min-height: 25vh;
-    /* border: 1px solid red; */
     text-align: left;
 }
 
@@ -77,6 +97,7 @@ label {
 #peer-select {
     display: inline-block;
     min-width: 200px;
+    min-height: 190px;
     border: 1px solid darkgray;
     font-size: inherit;
 }
@@ -105,7 +126,7 @@ option:hover {
 }
 
 #call-buttons {
-    margin: 45px 0;
+    margin: 25px 0;
 }
 
 .btn-wrapper {

@@ -22,8 +22,8 @@ const useMessageListener = (messageHandler: cb) => {
 
         if (readyState === WebSocket.OPEN) {
             addMessageHandler();
-        } else if (readyState === WebSocket.CONNECTING){
-             addOnOpen();
+        } else if (readyState === WebSocket.CONNECTING) {
+            addOnOpen();
         }
 
         // Unsub from message handlers

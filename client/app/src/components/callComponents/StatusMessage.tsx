@@ -16,11 +16,11 @@ const StatusMessage: FC<Props> = ({ callState }) => {
     if (!callState || status === CallStatus.NONE)
         mssg = 'Select a peer to call';
     else if (status === CallStatus.CALLING)
-        mssg = 'Calling peer-' + callState.targetPeer;
+        mssg = 'Calling Peer-' + callState.targetPeer;
     else if (status === CallStatus.BEINGCALLED)
-        mssg = 'Receiving call from peer-' + callState.targetPeer;
+        mssg = 'Receiving call from Peer-' + callState.targetPeer;
     else if (status === CallStatus.INACALL)
-        mssg = 'In a call with peer-' + callState.targetPeer;
+        mssg = 'In a call with Peer-' + callState.targetPeer;
 
     return (
         <div id="call-status">
