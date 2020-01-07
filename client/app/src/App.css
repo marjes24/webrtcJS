@@ -1,114 +1,114 @@
 .App {
-  text-align: center;
-  font-size: 14px;
-  width: 60%;
-  margin: auto;
+    text-align: center;
+    font-size: 14px;
+    width: 60%;
+    margin: auto;
 }
 
-button { 
-  width: 100px;
-  height: 30px;
-  cursor: pointer;
+button {
+    width: 100px;
+    height: 30px;
+    cursor: pointer;
 }
 
 button.green {
-  background-color: rgb(3, 180, 3);
-  color: white;
+    background-color: rgb(3, 180, 3);
+    color: white;
 }
 
 button.red {
-  background-color: red;
-  color: white;
+    background-color: red;
+    color: white;
 }
 
-label { 
-  font-weight: bold;
+label {
+    font-weight: bold;
 }
 
 .App div {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 #conductor {
-  /* width: 80%; */
-  margin: auto;
-  margin-top: 25px;
+    /* width: 80%; */
+    margin: auto;
+    margin-top: 25px;
 }
 
 #conductor hr {
-  margin-top: 55px;
+    margin-top: 55px;
 }
 
-.video-wrapper { 
-  display: inline-block;
-  position: relative;
-  margin: auto 25px;
+.video-wrapper {
+    display: inline-block;
+    position: relative;
+    margin: auto 25px;
 }
 
 #play-local {
-  position: absolute;
-  left: 0;
-  bottom: -40px;
+    position: absolute;
+    left: 0;
+    bottom: -40px;
 }
 
 .video-wrapper video {
-  width: 426px;
-  height : 240px;
-  background-color: black;
+    width: 426px;
+    height: 240px;
+    background-color: black;
 }
 
 #call-controller {
-  margin-top: 25px;
-  min-height: 25vh;
-  /* border: 1px solid red; */
-  text-align: left;
+    margin-top: 25px;
+    min-height: 25vh;
+    /* border: 1px solid red; */
+    text-align: left;
 }
 
-#peer-list { 
-  display: inline-block;
+#peer-list {
+    display: inline-block;
 }
 
-#peer-list>label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
+#peer-list > label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 
 #peer-select {
-  display: inline-block;
-  min-width: 200px;
-  border: 1px solid darkgray;
-  font-size: inherit;
+    display: inline-block;
+    min-width: 200px;
+    border: 1px solid darkgray;
+    font-size: inherit;
 }
 
-#peer-select>option {
-  padding: 15px 10px;
+#peer-select > option {
+    padding: 15px 10px;
 }
 
-option:hover { 
-  cursor: pointer;
+option:hover {
+    cursor: pointer;
 }
 
-#status-wrapper { 
-  vertical-align: top;
-  display: inline-block;
-  padding: 0 25px;
-  min-width: 300px
+#status-wrapper {
+    vertical-align: top;
+    display: inline-block;
+    padding: 0 25px;
+    min-width: 300px;
 }
 
 #call-status {
-  margin-left: 25px;
+    margin-left: 25px;
 }
 
-#call-status hr{
-  margin: 5px 0;
+#call-status hr {
+    margin: 5px 0;
 }
 
 #call-buttons {
-  margin: 45px 0;
+    margin: 45px 0;
 }
 
-.btn-wrapper { 
-  margin: 0 25px;
-  display: inline-block;
+.btn-wrapper {
+    margin: 0 25px;
+    display: inline-block;
 }

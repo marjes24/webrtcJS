@@ -1,7 +1,7 @@
-import React, { FC, useState } from "react";
-import { VideoPlayer } from "./VideoPlayer";
-import { useMedia } from "./useMedia";
-import { Nullable } from "../../common/types";
+import React, { FC, useState } from 'react';
+import { VideoPlayer } from './VideoPlayer';
+import { useMedia } from './useMedia';
+import { Nullable } from '../../common/types';
 
 interface Props {
     setStream: (strm: Nullable<MediaStream>) => void;
@@ -10,8 +10,10 @@ interface Props {
 const LocalVideo: FC<Props> = props => {
     const [play, playVideo] = useState(false);
 
+    //Get local stream
     const stream = useMedia(play);
 
+    // Set local-stream state for parent component
     props.setStream(stream);
 
     return (
@@ -19,13 +21,13 @@ const LocalVideo: FC<Props> = props => {
             <VideoPlayer play={play} stream={stream} />
             <button
                 id="play-local"
-                className={play ? "red" : "green"}
+                className={play ? 'red' : 'green'}
                 onClick={e => playVideo(!play)}
             >
-                {play ? "Stop Video" : "Start Video"}
+                {play ? 'Stop Video' : 'Start Video'}
             </button>
         </div>
-    )
+    );
 };
 
 export { LocalVideo };

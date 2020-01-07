@@ -1,6 +1,6 @@
-import React, { FC } from "react";
-import { PeersObj, Nullable } from "../../common/types";
-import { PeerItem } from "./Peer";
+import React, { FC } from 'react';
+import { PeersObj, Nullable } from '../../common/types';
+import { PeerItem } from './Peer';
 
 interface Props {
     peers: PeersObj;
@@ -10,9 +10,7 @@ interface Props {
 }
 
 const PeerList: FC<Props> = props => {
-    const peers = Object
-        .values(props.peers)
-        .filter(p => p.id !== props.selfId);
+    const peers = Object.values(props.peers).filter(p => p.id !== props.selfId);
 
     return (
         <div id="peer-list">
@@ -20,10 +18,12 @@ const PeerList: FC<Props> = props => {
             <select
                 id="peer-select"
                 multiple
-                value={[String(props.selectedId ?? "")]}
+                value={[String(props.selectedId ?? '')]}
                 onChange={e => props.selectPeer(Number(e.target.value))}
             >
-                {peers.map(p => <PeerItem key={p.id} peer={p} />)}
+                {peers.map(p => (
+                    <PeerItem key={p.id} peer={p} />
+                ))}
             </select>
         </div>
     );

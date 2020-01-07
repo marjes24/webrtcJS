@@ -1,29 +1,29 @@
-export type Nullable<T> = T | null
+export type Nullable<T> = T | null;
 
-export enum CallStatus { 
+export enum CallStatus {
     NONE,
     CALLING,
     BEINGCALLED,
     INACALL
-};
+}
 
-export enum PeerStatus { 
-    BUSY, 
-    AVAILABLE, 
+export enum PeerStatus {
+    BUSY,
+    AVAILABLE,
     INACALL
 }
 
-export interface Peer { 
-    id: number,
-    status: PeerStatus
-    callState: CallStatus
+export interface Peer {
+    id: number;
+    status: PeerStatus;
+    callState: CallStatus;
 }
 
-export interface PeersObj { 
-    [key: string]: Peer
+export interface PeersObj {
+    [key: string]: Peer;
 }
 
-export type CallState = { 
+export type CallState = {
     status: CallStatus;
     targetPeer: number;
     callId?: number;

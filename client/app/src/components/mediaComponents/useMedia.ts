@@ -1,5 +1,5 @@
-import { useEffect, useState, useRef } from "react";
-import { Nullable } from "../../common/types";
+import { useEffect, useState, useRef } from 'react';
+import { Nullable } from '../../common/types';
 
 /**
  * Hook to start or stop stream from webcam
@@ -12,10 +12,10 @@ const useMedia = (play: boolean) => {
     useEffect(() => {
         const currStream = streamRef.current;
 
-        if(!play && !currStream) return;
+        if (!play && !currStream) return;
 
         // On stop playing
-        if(!play && currStream) {
+        if (!play && currStream) {
             const tracks = currStream.getTracks();
             tracks.forEach(t => t.stop());
             streamRef.current = null;
@@ -25,20 +25,20 @@ const useMedia = (play: boolean) => {
 
         // On start playing
         (async () => {
-            try { 
-                const newStream = await navigator
-                    .mediaDevices
-                    .getUserMedia({ video: true });
-                    
+            try {
+                const newStream = await navigator.mediaDevices.getUserMedia({
+                    video: true
+                });
+
                 streamRef.current = newStream;
                 setStream(newStream);
-            } catch(err) { 
-                console.error(`getUserMedia() error - ${err.what}`)
+            } catch (err) {
+                console.error(`getUserMedia() error - ${err.what}`);
             }
-        })(); 
-    },[play]);
-    
+        })();
+    }, [play]);
+
     return stream;
 };
 
-export { useMedia }
+export { useMedia };

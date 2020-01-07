@@ -1,9 +1,9 @@
-import { useState, useEffect, useRef } from "react";
-import { Nullable } from "../common/types";
+import { useState, useEffect, useRef } from 'react';
+import { Nullable } from '../common/types';
 
 /**
  * - Opens a websocket to signal server
- * @param url 
+ * @param url
  * @returns WebScoket
  */
 const useSignalServer = (url: string) => {
@@ -12,32 +12,30 @@ const useSignalServer = (url: string) => {
 
     useEffect(() => {
         const currWs = wsRef.current;
-        
-        if (url.trim() === "") return;
+
+        if (url.trim() === '') return;
 
         // Close current connection if any
-        if(currWs && currWs.readyState === currWs.OPEN)
-            currWs.close();
+        if (currWs && currWs.readyState === currWs.OPEN) currWs.close();
 
         // Create websocket
         const newWS = new WebSocket(url);
         newWS.onopen = e => {
-            console.log("Opened websocket to signal server: %s", url);
-        }
+            console.log('Opened websocket to signal server: %s', url);
+        };
 
         wsRef.current = newWS;
         setWS(newWS);
-
     }, [url, wsRef]);
 
     useEffect(() => {
         return () => {
-            console.log("Closing websocket on cleanup");
+            console.log('Closing websocket on cleanup');
             wsRef.current?.close();
         };
     }, [wsRef]);
 
     return ws;
-}
+};
 
-export { useSignalServer }
+export { useSignalServer };
