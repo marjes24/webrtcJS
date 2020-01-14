@@ -1,39 +1,9 @@
 .App {
-    text-align: center;
+    text-align: left;
     font-size: 14px;
-    width: 60%;
+    width: 65%;
     margin: auto;
-}
-
-/* Clear button stylings */
-button {
-    padding: 0;
-    border: none;
-    font: inherit;
-    color: inherit;
-    background-color: transparent;
-}
-
-/* Add custom button stylings */
-button {
-    text-align: center;
-    width: 100px;
-    height: 30px;
-    cursor: pointer;
-}
-
-button.green {
-    background-color: rgb(3, 180, 3);
-    color: white;
-}
-
-button.red {
-    background-color: red;
-    color: white;
-}
-
-label {
-    font-weight: bold;
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 }
 
 /** Main wrapper styling **/
@@ -123,13 +93,4 @@ option:hover {
 
 #call-status hr {
     margin: 5px 0;
-}
-
-#call-buttons {
-    margin: 25px 0;
-}
-
-.btn-wrapper {
-    margin: 0 25px;
-    display: inline-block;
 }

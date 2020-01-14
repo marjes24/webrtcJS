@@ -6,11 +6,7 @@ interface Props {
 }
 
 const PeerItem: FC<Props> = props => {
-    return (
-        <option className="peer" value={props.peer.id}>
-            {'Peer ' + props.peer.id}
-        </option>
-    );
+    return <div>{'Peer ' + props.peer.id}</div>;
 };
 
 export { PeerItem };

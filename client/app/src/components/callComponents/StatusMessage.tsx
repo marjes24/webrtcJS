@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { CallState, CallStatus, Nullable } from '../../common/types';
+import { CardHeader, CardContent, Typography } from '@material-ui/core';
 
 interface Props {
     callState: Nullable<CallState>;
@@ -16,18 +17,21 @@ const StatusMessage: FC<Props> = ({ callState }) => {
     if (!callState || status === CallStatus.NONE)
         mssg = 'Select a peer to call';
     else if (status === CallStatus.CALLING)
-        mssg = 'Calling Peer-' + callState.targetPeer;
+        mssg = 'Calling Peer ' + callState.targetPeer;
     else if (status === CallStatus.BEINGCALLED)
-        mssg = 'Receiving call from Peer-' + callState.targetPeer;
+        mssg = 'Receiving call from Peer ' + callState.targetPeer;
     else if (status === CallStatus.INACALL)
-        mssg = 'In a call with Peer-' + callState.targetPeer;
+        mssg = 'In a call with Peer ' + callState.targetPeer;
 
     return (
-        <div id="call-status">
-            <label>Call Status:</label>
-            <hr></hr>
-            <p>{mssg}</p>
-        </div>
+        <>
+            <Typography component="h5" variant="h5">
+                Call Status
+            </Typography>
+            <Typography variant="body1" color="textSecondary" component="p">
+                {mssg}
+            </Typography>
+        </>
     );
 };
 

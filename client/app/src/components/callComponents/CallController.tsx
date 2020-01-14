@@ -3,9 +3,8 @@ import { PeerList } from './PeerList';
 import { PeersObj, CallState, Nullable, CallStatus } from '../../common/types';
 import { isWsOpen } from '../../common/utils/isWsOpen';
 import { WsContext } from '../websocketCtx';
-import { CallButtons } from './callButtons';
 import { useCallListener } from './useCallListener';
-import { StatusMessage } from './StatusMessage';
+import { CallCard } from './CallCard';
 
 interface Props {
     selfId: Nullable<number>;
@@ -86,12 +85,11 @@ const CallController: FC<Props> = props => {
                 selectedId={selectedPeerId}
             />
             <div id="status-wrapper">
-                <StatusMessage callState={props.callState} />
-                <CallButtons
-                    callState={props.callState}
+                <CallCard
                     callPeer={callPeer}
                     respondToCall={respondToCall}
                     endCall={endCall}
+                    callState={props.callState}
                 />
             </div>
         </div>

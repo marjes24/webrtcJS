@@ -1,11 +1,14 @@
 import React from 'react';
 import './App.css';
 import { Conductor } from './components/Conductor';
+import { Typography } from '@material-ui/core';
 
 const App: React.FC = () => {
     return (
         <div className="App">
-            <h1>Simple WebRTC peer connection example</h1>
+            <Typography component="h4" variant="h4">
+                WebRTC Peer Connection Sample
+            </Typography>
             <hr></hr>
             <Conductor />
         </div>

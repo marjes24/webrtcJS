@@ -2,6 +2,8 @@ import React, { FC, useState } from 'react';
 import { Nullable, CallState } from '../../common/types';
 import { RTCPeer } from './RTCPeer';
 import { LocalVideo } from './LocalVideo';
+import { Button } from '@material-ui/core';
+import { MuiButton } from '../styleComponents/MuiButton';
 
 interface Props {
     selfId: Nullable<number>;
@@ -23,13 +25,12 @@ const VideoController: FC<Props> = ({ selfId, callState }) => {
                 />
             </div>
             <div id="video-btns">
-                <button
-                    id="play-local"
-                    className={playLocal ? 'red' : 'green'}
+                <MuiButton
+                    display={playLocal ? 'red' : 'green'}
                     onClick={e => setPlay(!playLocal)}
                 >
                     {playLocal ? 'Stop Video' : 'Start Video'}
-                </button>
+                </MuiButton>
             </div>
         </>
     );

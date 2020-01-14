@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { PeersObj, Nullable } from '../../common/types';
 import { PeerItem } from './Peer';
+import { MuiSelect } from '../styleComponents/MuiSelect';
 
 interface Props {
     peers: PeersObj;
@@ -12,19 +13,20 @@ interface Props {
 const PeerList: FC<Props> = props => {
     const peers = Object.values(props.peers).filter(p => p.id !== props.selfId);
 
+    const options = peers.map(p => ({
+        display: <PeerItem peer={p} />,
+        value: p.id
+    }));
+
     return (
         <div id="peer-list">
-            <label htmlFor="peer-select">Available Peers:</label>
-            <select
-                id="peer-select"
-                multiple
-                value={[String(props.selectedId ?? '')]}
+            <MuiSelect
+                label="Peer"
+                options={options}
+                value={props.selectedId ?? ''}
                 onChange={e => props.selectPeer(Number(e.target.value))}
-            >
-                {peers.map(p => (
-                    <PeerItem key={p.id} peer={p} />
-                ))}
-            </select>
+                disabled={options.length === 0}
+            />
         </div>
     );
 };

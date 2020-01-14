@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { CallState, Nullable, CallStatus } from '../../common/types';
+import { MuiButton } from '../styleComponents/MuiButton';
 
 interface DefaultProps {
     call: () => void;
@@ -7,13 +8,9 @@ interface DefaultProps {
 
 const DefaultOptions: FC<DefaultProps> = props => {
     return (
-        <div id="call-buttons">
-            <div className="btn-wrapper">
-                <button className="green" onClick={e => props.call()}>
-                    Call
-                </button>
-            </div>
-        </div>
+        <MuiButton display="green" onClick={e => props.call()}>
+            Call
+        </MuiButton>
     );
 };
 
@@ -23,13 +20,9 @@ interface InACallOptions {
 
 const InACallOptions: FC<InACallOptions> = props => {
     return (
-        <div id="call-buttons">
-            <div className="btn-wrapper">
-                <button className="red" onClick={e => props.endCall()}>
-                    End Call
-                </button>
-            </div>
-        </div>
+        <MuiButton display="red" onClick={e => props.endCall()}>
+            End Call
+        </MuiButton>
     );
 };
 
@@ -40,18 +33,14 @@ interface ReceivingCallProps {
 
 const ReceivingCallOptions: FC<ReceivingCallProps> = props => {
     return (
-        <div id="call-buttons">
-            <div className="btn-wrapper">
-                <button className="green" onClick={e => props.answer()}>
-                    Answer
-                </button>
-            </div>
-            <div className="btn-wrapper">
-                <button className="red" onClick={e => props.ignore()}>
-                    Ignore
-                </button>
-            </div>
-        </div>
+        <>
+            <MuiButton display="green" onClick={e => props.answer()}>
+                Answer
+            </MuiButton>
+            <MuiButton display="red" onClick={e => props.ignore()}>
+                Ignore
+            </MuiButton>
+        </>
     );
 };
 
@@ -69,18 +58,14 @@ const CallButtons: FC<Props> = props => {
     const callStatus = props.callState?.status ?? CallStatus.NONE;
 
     if (callStatus === CallStatus.CALLING) {
-        return <div id="call-buttons"></div>;
-    }
-
-    if (callStatus === CallStatus.BEINGCALLED) {
-        return <ReceivingCallOptions answer={answer} ignore={ignore} />;
-    }
-
-    if (callStatus === CallStatus.INACALL) {
         return <InACallOptions endCall={props.endCall} />;
+    } else if (callStatus === CallStatus.BEINGCALLED) {
+        return <ReceivingCallOptions answer={answer} ignore={ignore} />;
+    } else if (callStatus === CallStatus.INACALL) {
+        return <InACallOptions endCall={props.endCall} />;
+    } else {
+        return <DefaultOptions call={props.callPeer} />;
     }
-
-    return <DefaultOptions call={props.callPeer} />;
 };
 
 export { CallButtons };
