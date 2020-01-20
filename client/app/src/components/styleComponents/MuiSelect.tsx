@@ -26,7 +26,8 @@ interface Props {
 const useStyles = makeStyles(t =>
     createStyles({
         root: {
-            minWidth: 180
+            minWidth: 180,
+            marginTop: 10
         },
         select: {
             '&:focus': {

@@ -2,7 +2,6 @@ import React, { FC, useState } from 'react';
 import { Nullable, CallState } from '../../common/types';
 import { RTCPeer } from './RTCPeer';
 import { LocalVideo } from './LocalVideo';
-import { Button } from '@material-ui/core';
 import { MuiButton } from '../styleComponents/MuiButton';
 
 interface Props {

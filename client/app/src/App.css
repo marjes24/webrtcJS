@@ -6,6 +6,15 @@
     font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 }
 
+:root {
+    --rtcBlue: #6fa8dc;
+}
+
+h4 {
+    color: var(--rtcBlue) !important;
+    text-decoration: none;
+}
+
 /** Main wrapper styling **/
 .App div {
     box-sizing: border-box;

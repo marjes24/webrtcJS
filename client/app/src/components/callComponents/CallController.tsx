@@ -1,9 +1,9 @@
 import React, { FC, useState, useContext } from 'react';
-import { PeerList } from './PeerList';
 import { PeersObj, CallState, Nullable, CallStatus } from '../../common/types';
 import { isWsOpen } from '../../common/utils/isWsOpen';
 import { WsContext } from '../websocketCtx';
 import { useCallListener } from './useCallListener';
+import { usePeerSelector } from './usePeerSelector';
 import { CallCard } from './CallCard';
 
 interface Props {
@@ -14,11 +14,12 @@ interface Props {
 }
 
 const CallController: FC<Props> = props => {
-    const [selectedPeerId, setPeer] = useState(null as Nullable<number>);
-
     // Start listening for calls and call responses
     const ws = useContext(WsContext);
     useCallListener(ws, props.setCallState);
+
+    // Set up peer selection
+    const [selectedPeerId, selectPeer] = usePeerSelector(props.callState);
 
     // Create handler functions for call button actions
     const callPeer = () => {
@@ -70,26 +71,18 @@ const CallController: FC<Props> = props => {
         }
     };
 
-    const selectPeer = (peerId: Nullable<number>) => {
-        // Only allow peer selection when not in one of the call/calling/called states
-        const status = props.callState?.status ?? CallStatus.NONE;
-        if (status === CallStatus.NONE) setPeer(peerId);
-    };
-
     return (
         <div id="call-controller">
-            <PeerList
-                selfId={props.selfId}
-                peers={props.peers}
-                selectPeer={selectPeer}
-                selectedId={selectedPeerId}
-            />
             <div id="status-wrapper">
                 <CallCard
                     callPeer={callPeer}
                     respondToCall={respondToCall}
                     endCall={endCall}
                     callState={props.callState}
+                    selfId={props.selfId}
+                    peers={props.peers}
+                    selectPeer={selectPeer}
+                    selectedId={selectedPeerId}
                 />
             </div>
         </div>
