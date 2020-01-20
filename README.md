@@ -1,7 +1,7 @@
 ## Simple WebRTC project
 ---
 
-* This is a simple react/node project to hopefully use for my webrtc native c++ to browser testing
+* This is a simple react/node project to hopefully use for my webrtc native c++ to browser testing, should work on localhost networks
 * Project is heavily inspired by https://webrtc.github.io/samples/src/content/peerconnection/pc1/ , main difference being this project uses a simple node signal server rather than both peers running on the same webpage
 ---
 ### Server setup
